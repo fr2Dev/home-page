@@ -3,11 +3,16 @@ import { Todo } from './components';
 import useLogic from './logic/useLogic';
 
 function App() {
-  const { state, handleTodoInput } = useLogic();
-  const { todoValue } = state;
+  const { state, handleTodoInput, addTodo } = useLogic();
+  const { todos, todoValue } = state;
   return (
     <div>
-      <Todo todoValue={todoValue} handleTodoInput={handleTodoInput} />
+      <Todo
+        todoValue={todoValue}
+        handleTodoInput={handleTodoInput}
+        addTodo={addTodo}
+        todos={todos}
+      />
     </div>
   );
 }
