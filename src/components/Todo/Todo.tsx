@@ -19,32 +19,18 @@ const TodoList: React.SFC<TodoListProps> = ({
   removeTodo,
   toggleDone,
 }) => {
-  const listProps: ListProps = {
+  const List = getList({
     list: todos,
     remove: removeTodo,
     toggleDone,
-  };
-  const List = getList(listProps);
+  });
 
   return (
     <div>
-      {/* {List} */}
-      {todos.map((el, i) => {
-        const { value, isDone } = el;
-
-        return (
-          <li key={uniqid()}>
-            <span onClick={() => toggleDone(i)} style={{ color: isDone ? 'lightgrey' : 'black' }}>
-              {value}
-            </span>
-            <span onClick={() => removeTodo(i)} style={{ marginLeft: '1rem' }}>
-              &times;
-            </span>
-          </li>
-        );
-      })}
+      {List}
       <form onSubmit={addTodo}>
         <input value={todoValue} onChange={handleTodoInput} />
+        <button type="submit">Add</button>
       </form>
     </div>
   );
@@ -59,12 +45,14 @@ interface ListProps {
 const getList = (props: ListProps) => {
   const { list, remove, toggleDone } = props;
 
-  return list.map((el, i) => {
-    const { value, isDone } = el;
+  return list.map((task, i) => {
+    const { value, isDone } = task;
 
     return (
-      <li key={uniqid()} onClick={() => toggleDone(i)}>
-        <span style={{ color: isDone ? 'lightgrey' : 'black' }}>{value}</span>
+      <li key={uniqid()}>
+        <span onClick={() => toggleDone(i)} style={{ color: isDone ? 'lightgrey' : 'black' }}>
+          {value}
+        </span>
         <span onClick={() => remove(i)} style={{ marginLeft: '1rem' }}>
           &times;
         </span>
