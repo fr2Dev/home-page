@@ -5,4 +5,5 @@ export interface Todo {
 
 export interface State {
   todos: Todo[] | [];
+  todoValue: string;
 }

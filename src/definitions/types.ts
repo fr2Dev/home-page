@@ -9,4 +9,8 @@ export type Action =
   | {
       type: 'REMOVE_TODO';
       payload: Todo[];
+    }
+  | {
+      type: 'SET_TODO_VALUE';
+      payload: string;
     };
