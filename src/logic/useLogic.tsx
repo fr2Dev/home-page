@@ -7,8 +7,9 @@ const useLogic = (initialState: State = defaultState) => {
   const handleTodoInput = getHandleTodoInput(dispatch);
   const addTodo = getAddTodo(state, dispatch);
   const removeTodo = getRemoveTodo(state, dispatch);
+  const toggleDone = getToggleDone(state, dispatch);
 
-  return { state, handleTodoInput, addTodo, removeTodo };
+  return { state, handleTodoInput, addTodo, removeTodo, toggleDone };
 };
 
 const reducer = (state: State, action: Action) => {
@@ -42,16 +43,23 @@ const getAddTodo = (state: State, dispatch: React.Dispatch<Action>) => (
   e.preventDefault();
   const { todoValue } = state;
   const hasValue = todoValue.length > 0;
-  const todo: Todo = { value: state.todoValue, isDone: false };
   if (hasValue) {
+    const todo: Todo = { value: state.todoValue, isDone: false };
     dispatch({ type: 'ADD_TODO', payload: todo });
     dispatch({ type: 'SET_TODO_VALUE', payload: '' });
   }
 };
 const getRemoveTodo = (state: State, dispatch: React.Dispatch<Action>) => (i: number) => {
-  const { todos } = state;
-  todos.splice(i, 1);
-  dispatch({ type: 'REMOVE_TODO', payload: todos });
+  const newTodos = [...state.todos];
+
+  newTodos.splice(i, 1);
+  dispatch({ type: 'REMOVE_TODO', payload: newTodos });
+};
+const getToggleDone = (state: State, dispatch: React.Dispatch<Action>) => (i: number) => {
+  const newTodos = [...state.todos];
+
+  newTodos[i].isDone = !newTodos[i].isDone;
+  dispatch({ type: 'TOGGLE_DONE', payload: newTodos });
 };
 
 const defaultState: State = {
