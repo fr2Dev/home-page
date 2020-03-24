@@ -7,10 +7,17 @@ interface TodoListProps {
   todos: Todo[];
   handleTodoInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   addTodo: (e: React.FormEvent<HTMLFormElement>) => void;
+  removeTodo: (i: number) => void;
 }
 
-const TodoList: React.SFC<TodoListProps> = ({ todoValue, handleTodoInput, addTodo, todos }) => {
-  const List = getList(todos);
+const TodoList: React.SFC<TodoListProps> = ({
+  todoValue,
+  handleTodoInput,
+  addTodo,
+  todos,
+  removeTodo,
+}) => {
+  const List = getList(todos, removeTodo);
 
   return (
     <div>
@@ -22,6 +29,11 @@ const TodoList: React.SFC<TodoListProps> = ({ todoValue, handleTodoInput, addTod
   );
 };
 
-const getList = (list: Todo[]) => list.map((el) => <li key={uniqid()}>{el.value}</li>);
+const getList = (list: Todo[], remove: (i: number) => void) =>
+  list.map((el, i) => (
+    <li key={uniqid()} onClick={() => remove(i)}>
+      {el.value}
+    </li>
+  ));
 
 export default TodoList;
