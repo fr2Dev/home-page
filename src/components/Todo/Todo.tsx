@@ -33,7 +33,9 @@ const TodoList: FC<TodoListProps> = ({
       <List {...listProps} />
       <form onSubmit={addTodo}>
         <input value={todoValue} onChange={handleTodoInput} />
-        <button type="submit">Add</button>
+        <button type="submit" disabled={todoValue.length === 0}>
+          Add
+        </button>
       </form>
     </div>
   );
