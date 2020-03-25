@@ -3,7 +3,7 @@ import { Todo } from './components';
 import useLogic from './logic/useLogic';
 
 function App() {
-  const { state, handleTodoInput, addTodo, removeTodo, toggleDone } = useLogic();
+  const { state, handleTodoInput, addTodo, removeTodo, toggleDone, orderTodos } = useLogic();
   const { todos, todoValue } = state;
   return (
     <div>
@@ -14,6 +14,7 @@ function App() {
         addTodo={addTodo}
         removeTodo={removeTodo}
         toggleDone={toggleDone}
+        orderTodos={orderTodos}
       />
     </div>
   );

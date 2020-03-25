@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import uniqid from 'uniqid';
 import { State, Todo } from '../definitions/interfaces';
 import { Action } from '../definitions/types';
 
@@ -8,8 +9,9 @@ const useLogic = (initialState: State = defaultState) => {
   const addTodo = getAddTodo(state, dispatch);
   const removeTodo = getRemoveTodo(state, dispatch);
   const toggleDone = getToggleDone(state, dispatch);
+  const orderTodos = getOrderTodos(state, dispatch);
 
-  return { state, handleTodoInput, addTodo, removeTodo, toggleDone };
+  return { state, handleTodoInput, addTodo, removeTodo, toggleDone, orderTodos };
 };
 
 const reducer = (state: State, action: Action) => {
@@ -21,6 +23,9 @@ const reducer = (state: State, action: Action) => {
       return { ...state, todos: action.payload };
     }
     case 'TOGGLE_DONE': {
+      return { ...state, todos: action.payload };
+    }
+    case 'UPDATE_ORDER_TODO': {
       return { ...state, todos: action.payload };
     }
     case 'SET_TODO_VALUE': {
@@ -44,7 +49,7 @@ const getAddTodo = (state: State, dispatch: React.Dispatch<Action>) => (
   const { todoValue } = state;
   const hasValue = todoValue.length > 0;
   if (hasValue) {
-    const todo: Todo = { value: state.todoValue, isDone: false };
+    const todo: Todo = { value: state.todoValue, isDone: false, id: uniqid() };
     dispatch({ type: 'ADD_TODO', payload: todo });
     dispatch({ type: 'SET_TODO_VALUE', payload: '' });
   }
@@ -60,6 +65,17 @@ const getToggleDone = (state: State, dispatch: React.Dispatch<Action>) => (i: nu
 
   newTodos[i].isDone = !newTodos[i].isDone;
   dispatch({ type: 'TOGGLE_DONE', payload: newTodos });
+};
+const getOrderTodos = (state: State, dispatch: React.Dispatch<Action>) => (
+  prevIndex: number,
+  nextIndex: number
+) => {
+  const { todos } = state;
+  const newTodos = [...todos];
+  const draggedTodo = newTodos.splice(prevIndex, 1)[0];
+
+  newTodos.splice(nextIndex, 0, draggedTodo);
+  dispatch({ type: 'UPDATE_ORDER_TODO', payload: newTodos });
 };
 
 const defaultState: State = {
