@@ -19,13 +19,7 @@ const reducer = (state: State, action: Action) => {
     case 'ADD_TODO': {
       return { ...state, todos: [...state.todos, action.payload] };
     }
-    case 'REMOVE_TODO': {
-      return { ...state, todos: action.payload };
-    }
-    case 'TOGGLE_DONE': {
-      return { ...state, todos: action.payload };
-    }
-    case 'UPDATE_ORDER_TODO': {
+    case 'UPDATE_TODOS': {
       return { ...state, todos: action.payload };
     }
     case 'SET_TODO_VALUE': {
@@ -58,13 +52,13 @@ const getRemoveTodo = (state: State, dispatch: React.Dispatch<Action>) => (i: nu
   const newTodos = [...state.todos];
 
   newTodos.splice(i, 1);
-  dispatch({ type: 'REMOVE_TODO', payload: newTodos });
+  dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
 };
 const getToggleDone = (state: State, dispatch: React.Dispatch<Action>) => (i: number) => {
   const newTodos = [...state.todos];
 
   newTodos[i].isDone = !newTodos[i].isDone;
-  dispatch({ type: 'TOGGLE_DONE', payload: newTodos });
+  dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
 };
 const getOrderTodos = (state: State, dispatch: React.Dispatch<Action>) => (
   prevIndex: number,
@@ -77,7 +71,7 @@ const getOrderTodos = (state: State, dispatch: React.Dispatch<Action>) => (
   };
 
   moveTodo(prevIndex, nextIndex);
-  dispatch({ type: 'UPDATE_ORDER_TODO', payload: newTodos });
+  dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
 };
 
 const defaultState: State = {
