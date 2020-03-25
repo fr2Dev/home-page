@@ -14,12 +14,13 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({ id, i, isDone, value, remove, toggleDone }) => {
   return (
     <Draggable draggableId={id} index={i}>
-      {(provided) => (
+      {(provided, snapshot) => (
         <Task
           key={id}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
+          isDragging={snapshot.isDragging}
         >
           <input type="checkbox" id={id} onChange={() => toggleDone(i)} checked={isDone} />
           <label htmlFor={id}>{value}</label>
