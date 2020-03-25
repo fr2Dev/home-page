@@ -72,9 +72,11 @@ const getOrderTodos = (state: State, dispatch: React.Dispatch<Action>) => (
 ) => {
   const { todos } = state;
   const newTodos = [...todos];
-  const draggedTodo = newTodos.splice(prevIndex, 1)[0];
+  const moveTodo = (from: number, to: number) => {
+    newTodos.splice(to, 0, newTodos.splice(from, 1)[0]);
+  };
 
-  newTodos.splice(nextIndex, 0, draggedTodo);
+  moveTodo(prevIndex, nextIndex);
   dispatch({ type: 'UPDATE_ORDER_TODO', payload: newTodos });
 };
 

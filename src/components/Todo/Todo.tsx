@@ -47,40 +47,10 @@ interface ListProps {
   orderTodos: (prevIndex: number, nextIndex: number) => void;
 }
 
-// const onDragEnd = (result: DropResult) => {
-//   // TODO: reorder column
-//   const { destination, source, draggableId } = result;
-//   console.log(
-//     '%c☘ %cdestination%c:',
-//     'font-weight:bold;color: #0F9D58;font-size:1.2em;',
-//     'font-weight:bold;border-bottom:2px solid #0F9D58;',
-//     'font-weight:bold;',
-//     destination
-//   );
-
-//   if (!destination) return;
-
-//   const isSamePosition =
-//     destination.droppableId === source.droppableId && destination.index === source.index;
-//   if (isSamePosition) return;
-
-//   orderTodos(source.index, destination.index);
-// };
-
 const getList = (props: ListProps) => {
   const { list, remove, toggleDone, orderTodos } = props;
 
-  const onDragEnd = (result: DropResult) => {
-    const { destination, source, draggableId } = result;
-
-    if (!destination) return;
-
-    const isSamePosition =
-      destination.droppableId === source.droppableId && destination.index === source.index;
-    if (isSamePosition) return;
-
-    orderTodos(source.index, destination.index);
-  };
+  const onDragEnd = getOnDragEnd(orderTodos);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -99,15 +69,16 @@ const getList = (props: ListProps) => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
-                      <span
-                        // onClick={() => toggleDone(i)}
-                        style={{ color: isDone ? 'lightgrey' : 'black' }}
-                      >
-                        {value}
-                      </span>
-                      <span onClick={() => remove(i)} style={{ marginLeft: '1rem' }}>
+                      <input
+                        type="checkbox"
+                        id={id}
+                        onChange={() => toggleDone(i)}
+                        checked={isDone}
+                      />
+                      <label htmlFor={id}>{value}</label>
+                      <button onClick={() => remove(i)} style={{ marginLeft: '1rem' }}>
                         &times;
-                      </span>
+                      </button>
                     </Task>
                   )}
                 </Draggable>
@@ -119,6 +90,20 @@ const getList = (props: ListProps) => {
       </Droppable>
     </DragDropContext>
   );
+};
+
+const getOnDragEnd = (orderTodos: (prevIndex: number, nextIndex: number) => void) => (
+  result: DropResult
+) => {
+  const { destination, source } = result;
+
+  if (!destination) return;
+
+  const isSamePosition =
+    destination.droppableId === source.droppableId && destination.index === source.index;
+  if (isSamePosition) return;
+
+  orderTodos(source.index, destination.index);
 };
 
 export default TodoList;
