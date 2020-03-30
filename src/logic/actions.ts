@@ -19,6 +19,7 @@ export const getAddTodo = (state: State, dispatch: React.Dispatch<Action>) => (
     const todo: Todo = { value: state.todoValue, isDone: false, id: uniqid() };
     dispatch({ type: 'ADD_TODO', payload: todo });
     dispatch({ type: 'SET_TODO_VALUE', payload: '' });
+    localStorage.setItem('todos', JSON.stringify([...state.todos, todo]));
   }
 };
 
@@ -27,6 +28,7 @@ export const getRemoveTodo = (state: State, dispatch: React.Dispatch<Action>) =>
 
   newTodos.splice(i, 1);
   dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
+  localStorage.setItem('todos', JSON.stringify(newTodos));
 };
 
 export const getToggleDone = (state: State, dispatch: React.Dispatch<Action>) => (i: number) => {
@@ -34,6 +36,7 @@ export const getToggleDone = (state: State, dispatch: React.Dispatch<Action>) =>
 
   newTodos[i].isDone = !newTodos[i].isDone;
   dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
+  localStorage.setItem('todos', JSON.stringify(newTodos));
 };
 
 export const getOrderTodos = (state: State, dispatch: React.Dispatch<Action>) => (
@@ -48,4 +51,9 @@ export const getOrderTodos = (state: State, dispatch: React.Dispatch<Action>) =>
 
   moveTodo(prevIndex, nextIndex);
   dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
+  localStorage.setItem('todos', JSON.stringify(newTodos));
+};
+
+export const getUpdateTodos = (dispatch: React.Dispatch<Action>) => (localTodos: Todo[]) => {
+  dispatch({ type: 'UPDATE_TODOS', payload: localTodos });
 };

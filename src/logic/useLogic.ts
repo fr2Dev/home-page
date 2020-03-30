@@ -7,6 +7,7 @@ import {
   getRemoveTodo,
   getOrderTodos,
   getToggleDone,
+  getUpdateTodos,
 } from './actions';
 
 const useLogic = (initialState: State = defaultState) => {
@@ -16,8 +17,9 @@ const useLogic = (initialState: State = defaultState) => {
   const removeTodo = getRemoveTodo(state, dispatch);
   const toggleDone = getToggleDone(state, dispatch);
   const orderTodos = getOrderTodos(state, dispatch);
+  const updateTodos = getUpdateTodos(dispatch);
 
-  return { state, handleTodoInput, addTodo, removeTodo, toggleDone, orderTodos };
+  return { state, handleTodoInput, addTodo, removeTodo, toggleDone, orderTodos, updateTodos };
 };
 
 const reducer = (state: State, action: Action) => {
