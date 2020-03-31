@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { Todo } from '../../definitions/interfaces';
 import List from './List';
 
@@ -21,6 +21,9 @@ const TodoList: FC<TodoListProps> = ({
   toggleDone,
   orderTodos,
 }) => {
+  const [inputVisible, setInputVisible] = useState(todos.length !== 0);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const listProps = {
     list: todos,
     remove: removeTodo,
@@ -30,9 +33,20 @@ const TodoList: FC<TodoListProps> = ({
 
   return (
     <div>
-      <List {...listProps} />
-      <form onSubmit={addTodo}>
-        <input value={todoValue} onChange={handleTodoInput} />
+      {!inputVisible ? (
+        <button
+          onClick={() => {
+            setInputVisible(true);
+            setTimeout(() => inputRef.current?.focus());
+          }}
+        >
+          New task
+        </button>
+      ) : (
+        <List {...listProps} />
+      )}
+      <form onSubmit={addTodo} style={{ visibility: inputVisible ? 'visible' : 'hidden' }}>
+        <input ref={inputRef} value={todoValue} onChange={handleTodoInput} />
         <button type="submit" disabled={todoValue.length === 0}>
           Add
         </button>
