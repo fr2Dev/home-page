@@ -40,13 +40,13 @@ const TodoList: FC<TodoListProps> = ({
             setTimeout(() => inputRef.current?.focus());
           }}
         >
-          New task
+          New Todo
         </button>
       ) : (
         <List {...listProps} />
       )}
       <form onSubmit={addTodo} style={{ visibility: inputVisible ? 'visible' : 'hidden' }}>
-        <input ref={inputRef} value={todoValue} onChange={handleTodoInput} />
+        <input ref={inputRef} value={todoValue} onChange={handleTodoInput} placeholder="New Todo" />
         <button type="submit" disabled={todoValue.length === 0}>
           Add
         </button>
