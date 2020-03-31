@@ -33,19 +33,23 @@ const TodoList: FC<TodoListProps> = ({
 
   return (
     <div>
-      {!inputVisible ? (
+      {todos.length === 0 ? (
         <button
           onClick={() => {
             setInputVisible(true);
             setTimeout(() => inputRef.current?.focus());
           }}
+          style={{ display: inputVisible ? 'none' : 'inlineBlock' }}
         >
           New Todo
         </button>
       ) : (
         <List {...listProps} />
       )}
-      <form onSubmit={addTodo} style={{ visibility: inputVisible ? 'visible' : 'hidden' }}>
+      <form
+        onSubmit={addTodo}
+        style={{ visibility: todos.length !== 0 || inputVisible ? 'visible' : 'hidden' }}
+      >
         <input ref={inputRef} value={todoValue} onChange={handleTodoInput} placeholder="New Todo" />
         <button type="submit" disabled={todoValue.length === 0}>
           Add
