@@ -20,8 +20,6 @@ function App() {
   useEffect(() => {
     if (localStorage.length > 0 && localStorage.getItem('todos')) {
       // We have items
-      console.log('useEffect');
-
       const localTodos: ITodo[] = JSON.parse(localStorage.getItem('todos') as string);
       updateTodos(localTodos);
     }

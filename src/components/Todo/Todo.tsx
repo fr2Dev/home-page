@@ -1,6 +1,7 @@
 import React, { FC, useRef, useState } from 'react';
 import { Todo } from '../../definitions/interfaces';
 import List from './List';
+import { Container, Form, Button } from './styled';
 
 interface TodoListProps {
   todoValue: string;
@@ -32,9 +33,9 @@ const TodoList: FC<TodoListProps> = ({
   };
 
   return (
-    <div>
+    <Container>
       {todos.length === 0 ? (
-        <button
+        <Button
           onClick={() => {
             setInputVisible(true);
             setTimeout(() => inputRef.current?.focus());
@@ -42,20 +43,22 @@ const TodoList: FC<TodoListProps> = ({
           style={{ display: inputVisible ? 'none' : 'inlineBlock' }}
         >
           New Todo
-        </button>
+        </Button>
       ) : (
         <List {...listProps} />
       )}
-      <form
+      <Form
         onSubmit={addTodo}
         style={{ visibility: todos.length !== 0 || inputVisible ? 'visible' : 'hidden' }}
       >
         <input ref={inputRef} value={todoValue} onChange={handleTodoInput} placeholder="New Todo" />
-        <button type="submit" disabled={todoValue.length === 0}>
-          Add
-        </button>
-      </form>
-    </div>
+        {todoValue.length !== 0 && (
+          <Button type="submit" className="submit">
+            Add
+          </Button>
+        )}
+      </Form>
+    </Container>
   );
 };
 
