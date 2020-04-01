@@ -14,8 +14,29 @@ function App() {
     toggleDone,
     orderTodos,
     updateTodos,
+    removeAll,
+    removeDone,
+    checkAll,
+    uncheckAll,
   } = useLogic();
   const { todos, todoValue } = state;
+  const todosProps = {
+    value: {
+      todos,
+      todoValue,
+    },
+    actions: {
+      handleTodoInput,
+      addTodo,
+      removeTodo,
+      toggleDone,
+      orderTodos,
+      removeAll,
+      removeDone,
+      checkAll,
+      uncheckAll,
+    },
+  };
 
   useEffect(() => {
     if (localStorage.length > 0 && localStorage.getItem('todos')) {
@@ -28,15 +49,7 @@ function App() {
     <div>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Todo
-          todoValue={todoValue}
-          handleTodoInput={handleTodoInput}
-          todos={todos}
-          addTodo={addTodo}
-          removeTodo={removeTodo}
-          toggleDone={toggleDone}
-          orderTodos={orderTodos}
-        />
+        <Todo {...todosProps} />
       </ThemeProvider>
     </div>
   );

@@ -5,24 +5,36 @@ import Menu from './Menu';
 import { Container, Form, Button } from './styled';
 
 interface TodoListProps {
-  todoValue: string;
-  todos: Todo[];
-  handleTodoInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  addTodo: (e: React.FormEvent<HTMLFormElement>) => void;
-  removeTodo: (i: number) => void;
-  toggleDone: (i: number) => void;
-  orderTodos: (prevIndex: number, nextIndex: number) => void;
+  value: {
+    todoValue: string;
+    todos: Todo[];
+  };
+  actions: {
+    handleTodoInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    addTodo: (e: React.FormEvent<HTMLFormElement>) => void;
+    removeTodo: (i: number) => void;
+    toggleDone: (i: number) => void;
+    orderTodos: (prevIndex: number, nextIndex: number) => void;
+    removeAll: () => void;
+    removeDone: () => void;
+    checkAll: () => void;
+    uncheckAll: () => void;
+  };
 }
 
-const TodoList: FC<TodoListProps> = ({
-  todoValue,
-  handleTodoInput,
-  addTodo,
-  todos,
-  removeTodo,
-  toggleDone,
-  orderTodos,
-}) => {
+const TodoList: FC<TodoListProps> = ({ value, actions }) => {
+  const { todos, todoValue } = value;
+  const {
+    handleTodoInput,
+    addTodo,
+    removeTodo,
+    toggleDone,
+    orderTodos,
+    removeAll,
+    removeDone,
+    checkAll,
+    uncheckAll,
+  } = actions;
   const [inputVisible, setInputVisible] = useState(todos.length !== 0);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -31,6 +43,13 @@ const TodoList: FC<TodoListProps> = ({
     remove: removeTodo,
     toggleDone,
     orderTodos,
+  };
+
+  const menuProps = {
+    removeAll,
+    removeDone,
+    checkAll,
+    uncheckAll,
   };
 
   return (
@@ -48,7 +67,7 @@ const TodoList: FC<TodoListProps> = ({
       ) : (
         <div>
           <List {...listProps} />
-          <Menu />
+          <Menu {...menuProps} />
         </div>
       )}
       <Form

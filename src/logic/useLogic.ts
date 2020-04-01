@@ -8,6 +8,10 @@ import {
   getOrderTodos,
   getToggleDone,
   getUpdateTodos,
+  getRemoveAll,
+  getRemoveDone,
+  getCheckAll,
+  getUncheckAll,
 } from './actions';
 
 const useLogic = (initialState: State = defaultState) => {
@@ -18,8 +22,24 @@ const useLogic = (initialState: State = defaultState) => {
   const toggleDone = getToggleDone(state, dispatch);
   const orderTodos = getOrderTodos(state, dispatch);
   const updateTodos = getUpdateTodos(dispatch);
+  const removeAll = getRemoveAll(dispatch);
+  const removeDone = getRemoveDone(state, dispatch);
+  const checkAll = getCheckAll(state, dispatch);
+  const uncheckAll = getUncheckAll(state, dispatch);
 
-  return { state, handleTodoInput, addTodo, removeTodo, toggleDone, orderTodos, updateTodos };
+  return {
+    state,
+    handleTodoInput,
+    addTodo,
+    removeTodo,
+    toggleDone,
+    orderTodos,
+    updateTodos,
+    removeAll,
+    removeDone,
+    checkAll,
+    uncheckAll,
+  };
 };
 
 const reducer = (state: State, action: Action) => {

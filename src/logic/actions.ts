@@ -58,13 +58,25 @@ export const getUpdateTodos = (dispatch: React.Dispatch<Action>) => (localTodos:
   dispatch({ type: 'UPDATE_TODOS', payload: localTodos });
 };
 
-// export const getRemoveAll = (dispatch: React.Dispatch<Action>) => () => {
-//   dispatch({ type: 'UPDATE_TODOS', payload: [] });
-//   localStorage.setItem('todos', JSON.stringify([]));
-// };
+export const getRemoveAll = (dispatch: React.Dispatch<Action>) => () => {
+  dispatch({ type: 'UPDATE_TODOS', payload: [] });
+  localStorage.setItem('todos', JSON.stringify([]));
+};
 
-// export const getRemoveDone = (state: State, dispatch: React.Dispatch<Action>) => () => {
-//   const newTodos = state.todos.filter(todo => !todo.isDone);
-//   dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
-//   localStorage.setItem('todos', JSON.stringify(newTodos));
-// };
+export const getRemoveDone = (state: State, dispatch: React.Dispatch<Action>) => () => {
+  const newTodos = state.todos.filter((todo) => !todo.isDone);
+  dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
+  localStorage.setItem('todos', JSON.stringify(newTodos));
+};
+
+export const getCheckAll = (state: State, dispatch: React.Dispatch<Action>) => () => {
+  const newTodos = (state.todos as Array<Todo>).map((todo: Todo) => ({ ...todo, isDone: true }));
+  dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
+  localStorage.setItem('todos', JSON.stringify(newTodos));
+};
+
+export const getUncheckAll = (state: State, dispatch: React.Dispatch<Action>) => () => {
+  const newTodos = (state.todos as Array<Todo>).map((todo: Todo) => ({ ...todo, isDone: false }));
+  dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
+  localStorage.setItem('todos', JSON.stringify(newTodos));
+};
