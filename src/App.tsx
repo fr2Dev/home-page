@@ -3,7 +3,7 @@ import { Todo } from './components';
 import useLogic from './logic/useLogic';
 import { Todo as ITodo } from './definitions/interfaces';
 import { ThemeProvider } from 'styled-components';
-import theme from './style/theme';
+import { theme, GlobalStyle } from './style';
 
 function App() {
   const {
@@ -27,6 +27,7 @@ function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <Todo
           todoValue={todoValue}
           handleTodoInput={handleTodoInput}

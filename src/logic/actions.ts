@@ -57,3 +57,14 @@ export const getOrderTodos = (state: State, dispatch: React.Dispatch<Action>) =>
 export const getUpdateTodos = (dispatch: React.Dispatch<Action>) => (localTodos: Todo[]) => {
   dispatch({ type: 'UPDATE_TODOS', payload: localTodos });
 };
+
+// export const getRemoveAll = (dispatch: React.Dispatch<Action>) => () => {
+//   dispatch({ type: 'UPDATE_TODOS', payload: [] });
+//   localStorage.setItem('todos', JSON.stringify([]));
+// };
+
+// export const getRemoveDone = (state: State, dispatch: React.Dispatch<Action>) => () => {
+//   const newTodos = state.todos.filter(todo => !todo.isDone);
+//   dispatch({ type: 'UPDATE_TODOS', payload: newTodos });
+//   localStorage.setItem('todos', JSON.stringify(newTodos));
+// };

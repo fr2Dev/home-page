@@ -1,6 +1,7 @@
 import React, { FC, useRef, useState } from 'react';
 import { Todo } from '../../definitions/interfaces';
 import List from './List';
+import Menu from './Menu';
 import { Container, Form, Button } from './styled';
 
 interface TodoListProps {
@@ -45,7 +46,10 @@ const TodoList: FC<TodoListProps> = ({
           New Todo
         </Button>
       ) : (
-        <List {...listProps} />
+        <div>
+          <List {...listProps} />
+          <Menu />
+        </div>
       )}
       <Form
         onSubmit={addTodo}
