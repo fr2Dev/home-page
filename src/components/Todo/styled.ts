@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import { rgba } from 'polished';
 
 export const TaskList = styled.ul`
   margin-top: 0;
   padding: 0;
-  list-style-type: none;
 `;
 
 interface TaskProps {
@@ -60,8 +60,11 @@ export const Task = styled.li<TaskProps>`
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.foreground};
   border-radius: 8px;
+  display: flex;
   font-size: 20px;
+  flex-direction: column;
   padding: 1rem;
+  width: 20rem;
 
   & *:focus {
     outline-color: ${({ theme }) => theme.colors.outline};
@@ -119,5 +122,100 @@ export const Button = styled.button`
 
   &:hover {
     cursor: pointer;
+  }
+`;
+
+export const ListActions = styled.ul`
+  background-color: ${({ theme }) => theme.colors.foreground};
+  border-radius: 8px;
+  top: 100%;
+  padding: 0.5rem;
+  position: absolute;
+  margin-top: 0;
+  right: 0;
+  width: 7rem;
+  z-index: 3;
+
+  button {
+    width: 100%;
+  }
+`;
+
+interface MenuContainerProps {
+  allIsDone: boolean;
+}
+
+export const MenuContainer = styled.div<MenuContainerProps>`
+  display: flex;
+  justify-content: space-between;
+  color: ${({ theme, allIsDone }) => (allIsDone ? theme.colors.outline : theme.colors.font)};
+  position: relative;
+  width: 100%;
+
+  & > div:first-child {
+    margin-left: 0.5rem;
+
+    span {
+      font-style: italic;
+    }
+  }
+`;
+
+export const ButtonAction = styled.button`
+  background-color: ${({ theme }) => theme.colors.outline};
+  border-radius: 4px;
+  border: none;
+  color: ${({ theme }) => theme.colors.background};
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.font};
+  }
+`;
+
+export const Toggle = styled.button`
+  align-items: center;
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  height: 1.8rem;
+  justify-content: center;
+  width: 1.8rem;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: ${({ theme }) => rgba(theme.colors.font, 0.15)};
+  }
+
+  span {
+    position: relative;
+
+    &::before,
+    &::after,
+    & {
+      background-color: ${({ theme }) => theme.colors.font};
+      border-radius: 50%;
+      height: 0.3rem;
+      width: 0.3rem;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      left: -130%;
+    }
+
+    &::after {
+      left: 130%;
+    }
   }
 `;

@@ -46,6 +46,7 @@ const TodoList: FC<TodoListProps> = ({ value, actions }) => {
   };
 
   const menuProps = {
+    todos,
     removeAll,
     removeDone,
     checkAll,
@@ -53,35 +54,42 @@ const TodoList: FC<TodoListProps> = ({ value, actions }) => {
   };
 
   return (
-    <Container>
-      {todos.length === 0 ? (
-        <Button
-          onClick={() => {
-            setInputVisible(true);
-            setTimeout(() => inputRef.current?.focus());
-          }}
-          style={{ display: inputVisible ? 'none' : 'inlineBlock' }}
-        >
-          New Todo
-        </Button>
-      ) : (
-        <div>
-          <List {...listProps} />
-          <Menu {...menuProps} />
-        </div>
-      )}
-      <Form
-        onSubmit={addTodo}
-        style={{ visibility: todos.length !== 0 || inputVisible ? 'visible' : 'hidden' }}
-      >
-        <input ref={inputRef} value={todoValue} onChange={handleTodoInput} placeholder="New Todo" />
-        {todoValue.length !== 0 && (
-          <Button type="submit" className="submit">
-            Add
+    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <Container>
+        {todos.length === 0 ? (
+          <Button
+            onClick={() => {
+              setInputVisible(true);
+              setTimeout(() => inputRef.current?.focus());
+            }}
+            style={{ display: inputVisible ? 'none' : 'inlineBlock' }}
+          >
+            New Todo
           </Button>
+        ) : (
+          <div>
+            <Menu {...menuProps} />
+            <List {...listProps} />
+          </div>
         )}
-      </Form>
-    </Container>
+        <Form
+          onSubmit={addTodo}
+          style={{ visibility: todos.length !== 0 || inputVisible ? 'visible' : 'hidden' }}
+        >
+          <input
+            ref={inputRef}
+            value={todoValue}
+            onChange={handleTodoInput}
+            placeholder="New Todo"
+          />
+          {todoValue.length !== 0 && (
+            <Button type="submit" className="submit">
+              Add
+            </Button>
+          )}
+        </Form>
+      </Container>
+    </div>
   );
 };
 

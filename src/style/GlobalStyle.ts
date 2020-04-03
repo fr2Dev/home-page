@@ -5,8 +5,16 @@ const GlobalStyle = createGlobalStyle`
     & button,
     & input,
     & {
+      font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+    }
 
-    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    button {
+      cursor: pointer;
     }
 }`;
 

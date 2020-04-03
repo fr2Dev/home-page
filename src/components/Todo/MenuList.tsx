@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+import { ListActions, ButtonAction } from './styled';
 
 interface MenuListProps {
   menuRef: React.RefObject<HTMLUListElement>;
@@ -27,20 +28,20 @@ const MenuList: FC<MenuListProps> = ({ menuRef, close, actions }) => {
   const { removeAll, removeDone, checkAll, uncheckAll } = actions;
 
   return (
-    <ul ref={menuRef} style={{ background: 'red' }}>
+    <ListActions ref={menuRef}>
       <li>
-        <button onClick={checkAll}>Check all</button>
+        <ButtonAction onClick={checkAll}>Check all</ButtonAction>
       </li>
       <li>
-        <button onClick={uncheckAll}>Uncheck all</button>
+        <ButtonAction onClick={uncheckAll}>Uncheck all</ButtonAction>
       </li>
       <li>
-        <button onClick={removeDone}>Remove done</button>
+        <ButtonAction onClick={removeDone}>Remove done</ButtonAction>
       </li>
       <li>
-        <button onClick={removeAll}>Remove all</button>
+        <ButtonAction onClick={removeAll}>Remove all</ButtonAction>
       </li>
-    </ul>
+    </ListActions>
   );
 };
 
