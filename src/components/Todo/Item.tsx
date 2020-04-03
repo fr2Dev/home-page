@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { Task } from './styled';
+import { Task, Label } from './styled';
 
 interface ItemProps {
   id: string;
@@ -22,9 +22,11 @@ const Item: FC<ItemProps> = ({ id, i, isDone, value, remove, toggleDone }) => {
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
         >
-          <input type="checkbox" id={id} onChange={() => toggleDone(i)} checked={isDone} />
-          <label htmlFor={id}>{value}</label>
-          <button onClick={() => remove(i)} style={{ marginLeft: '1rem' }}>
+          <Label htmlFor={id}>
+            <input type="checkbox" id={id} onChange={() => toggleDone(i)} checked={isDone} />
+            <div>{value}</div>
+          </Label>
+          <button onClick={() => remove(i)} style={{ marginLeft: 'auto' }}>
             &times;
           </button>
         </Task>

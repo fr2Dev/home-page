@@ -18,6 +18,11 @@ export const Task = styled.li<TaskProps>`
   opacity: ${({ isDragging }) => (isDragging ? '0.65' : '1')};
   padding: 4px;
 
+  &:hover,
+  &:focus {
+    background-color: ${({ theme }) => rgba(theme.colors.font, 0.05)};
+  }
+
   button,
   input,
   label {
@@ -25,7 +30,7 @@ export const Task = styled.li<TaskProps>`
   }
 
   button {
-    background-color: inherit;
+    background-color: transparent;
     border: none;
     color: inherit;
     opacity: 0%;
@@ -216,6 +221,90 @@ export const Toggle = styled.button`
 
     &::after {
       left: 130%;
+    }
+  }
+`;
+
+export const Label = styled.label`
+  align-items: center;
+  display: flex;
+  position: relative;
+  margin: 0.2rem;
+
+  input {
+    position: relative;
+    top: -0.375rem;
+
+    margin: 0.3rem 1rem 0 0;
+
+    cursor: pointer;
+
+    &:before {
+      transition: all 0.15s cubic-bezier(0, 1.45, 1, 0.98);
+
+      content: '';
+
+      position: absolute;
+      left: 0;
+      z-index: 1;
+
+      width: 1rem;
+      height: 1rem;
+
+      border: 2px solid ${({ theme }) => rgba(theme.colors.font, 0.15)};
+    }
+
+    &:after {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 1.25rem;
+      height: 1.25rem;
+
+      background: ${({ theme }) => theme.colors.foreground};
+
+      cursor: pointer;
+    }
+
+    &:checked {
+      &:before {
+        transform: rotate(-45deg);
+
+        height: 0.5rem;
+
+        border-color: ${({ theme }) => theme.colors.outline};
+        border-top-style: none;
+        border-right-style: none;
+      }
+
+      & + div {
+        opacity: 0.45;
+
+        &::before {
+          transform: translate(-50%, -50%);
+          transition: transform 0.35s cubic-bezier(0, 1.45, 1, 0.98);
+        }
+      }
+    }
+  }
+  div {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: ${({ theme }) => theme.colors.font};
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-150%, -50%);
     }
   }
 `;

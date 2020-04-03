@@ -37,6 +37,7 @@ const TodoList: FC<TodoListProps> = ({ value, actions }) => {
   } = actions;
   const [inputVisible, setInputVisible] = useState(todos.length !== 0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const showForm = todos.length !== 0 || inputVisible;
 
   const listProps = {
     list: todos,
@@ -74,7 +75,7 @@ const TodoList: FC<TodoListProps> = ({ value, actions }) => {
         )}
         <Form
           onSubmit={addTodo}
-          style={{ visibility: todos.length !== 0 || inputVisible ? 'visible' : 'hidden' }}
+          style={{ visibility: showForm ? 'visible' : 'hidden', height: showForm ? 'auto' : '0' }}
         >
           <input
             ref={inputRef}
