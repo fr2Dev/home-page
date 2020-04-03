@@ -26,7 +26,7 @@ const Menu: FC<MenuProps> = (props) => {
       <MenuContainer allIsDone={allIsDone}>
         <div>
           <span>{`${doneLength}/${length}`}</span>
-          {allIsDone ? ' 🎉' : ''}
+          {allIsDone ? <span className="party"> 🎉</span> : ''}
         </div>
         <Toggle onClick={open}>
           <span />

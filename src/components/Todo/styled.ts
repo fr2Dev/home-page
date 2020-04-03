@@ -39,7 +39,7 @@ export const Task = styled.li<TaskProps>`
     &:hover,
     &:focus {
       color: #f44336;
-      cursor: pointer;
+
       transform: scale(1.25);
       transition: transform 0.15s;
     }
@@ -126,7 +126,6 @@ export const Button = styled.button`
   }
 
   &:hover {
-    cursor: pointer;
   }
 `;
 
@@ -162,6 +161,43 @@ export const MenuContainer = styled.div<MenuContainerProps>`
 
     span {
       font-style: italic;
+    }
+  }
+
+  .party {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    display: inline-block;
+    margin-left: 0.25rem;
+    transform-origin: 0 50%;
+
+    @keyframes shake {
+      0% {
+        transform: rotate(0);
+      }
+      15% {
+        transform: rotate(-5deg);
+      }
+      30% {
+        transform: rotate(5deg);
+      }
+      45% {
+        transform: rotate(-4deg);
+      }
+      60% {
+        transform: rotate(4deg);
+      }
+      75% {
+        transform: rotate(-2deg);
+      }
+      85% {
+        transform: rotate(2deg);
+      }
+      92% {
+        transform: rotate(-1deg);
+      }
+      100% {
+        transform: rotate(0);
+      }
     }
   }
 `;
@@ -228,56 +264,44 @@ export const Toggle = styled.button`
 export const Label = styled.label`
   align-items: center;
   display: flex;
+  cursor: pointer;
   position: relative;
   margin: 0.2rem;
 
   input {
     position: relative;
+    margin: 0.3rem 1rem 0 0;
     top: -0.375rem;
 
-    margin: 0.3rem 1rem 0 0;
-
-    cursor: pointer;
-
     &:before {
-      transition: all 0.15s cubic-bezier(0, 1.45, 1, 0.98);
-
       content: '';
-
-      position: absolute;
-      left: 0;
-      z-index: 1;
-
-      width: 1rem;
-      height: 1rem;
-
       border: 2px solid ${({ theme }) => rgba(theme.colors.font, 0.15)};
+      height: 1rem;
+      left: 0;
+      position: absolute;
+      transition: all 0.15s cubic-bezier(0, 1.45, 1, 0.98);
+      width: 1rem;
+      z-index: 1;
     }
 
     &:after {
+      background: ${({ theme }) => theme.colors.foreground};
       content: '';
-
+      cursor: pointer;
+      height: 1.25rem;
+      left: 0;
       position: absolute;
       top: 0;
-      left: 0;
-
       width: 1.25rem;
-      height: 1.25rem;
-
-      background: ${({ theme }) => theme.colors.foreground};
-
-      cursor: pointer;
     }
 
     &:checked {
       &:before {
-        transform: rotate(-45deg);
-
-        height: 0.5rem;
-
         border-color: ${({ theme }) => theme.colors.outline};
         border-top-style: none;
         border-right-style: none;
+        height: 0.5rem;
+        transform: rotate(-45deg);
       }
 
       & + div {
