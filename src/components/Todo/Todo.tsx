@@ -1,42 +1,37 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useRef, useState, useEffect } from 'react';
 import { Todo } from '../../definitions/interfaces';
-import List from './List';
-import Menu from './Menu';
-import { Container, Form, Button } from './styled';
+import useLogic from './logic/useLogic';
+import { List, Menu, Form } from './index';
+import { Container, Button } from './styled/index';
 
-interface TodoListProps {
-  value: {
-    todoValue: string;
-    todos: Todo[];
-  };
-  actions: {
-    handleTodoInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    addTodo: (e: React.FormEvent<HTMLFormElement>) => void;
-    removeTodo: (i: number) => void;
-    toggleDone: (i: number) => void;
-    orderTodos: (prevIndex: number, nextIndex: number) => void;
-    removeAll: () => void;
-    removeDone: () => void;
-    checkAll: () => void;
-    uncheckAll: () => void;
-  };
-}
+interface TodoListProps {}
 
-const TodoList: FC<TodoListProps> = ({ value, actions }) => {
-  const { todos, todoValue } = value;
+const TodoList: FC<TodoListProps> = () => {
   const {
+    state,
     handleTodoInput,
     addTodo,
     removeTodo,
     toggleDone,
     orderTodos,
+    updateTodos,
     removeAll,
     removeDone,
     checkAll,
     uncheckAll,
-  } = actions;
+  } = useLogic();
+  const { todos, todoValue } = state;
   const [inputVisible, setInputVisible] = useState(todos.length !== 0);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (localStorage.length > 0 && localStorage.getItem('todos')) {
+      // We have items
+      const localTodos: Todo[] = JSON.parse(localStorage.getItem('todos') as string);
+      updateTodos(localTodos);
+    }
+  }, []);
+
   const showForm = todos.length !== 0 || inputVisible;
 
   const listProps = {
@@ -52,6 +47,14 @@ const TodoList: FC<TodoListProps> = ({ value, actions }) => {
     removeDone,
     checkAll,
     uncheckAll,
+  };
+
+  const formProps = {
+    handleTodoInput,
+    addTodo,
+    showForm,
+    inputRef,
+    todoValue,
   };
 
   return (
@@ -73,22 +76,7 @@ const TodoList: FC<TodoListProps> = ({ value, actions }) => {
             <List {...listProps} />
           </div>
         )}
-        <Form
-          onSubmit={addTodo}
-          style={{ visibility: showForm ? 'visible' : 'hidden', height: showForm ? 'auto' : '0' }}
-        >
-          <input
-            ref={inputRef}
-            value={todoValue}
-            onChange={handleTodoInput}
-            placeholder="New Todo"
-          />
-          {todoValue.length !== 0 && (
-            <Button type="submit" className="submit">
-              Add
-            </Button>
-          )}
-        </Form>
+        <Form {...formProps} />
       </Container>
     </div>
   );

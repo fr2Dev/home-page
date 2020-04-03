@@ -1,7 +1,7 @@
 import React, { FC, useState, useRef } from 'react';
 import MenuList from './MenuList';
 import { Todo } from '../../definitions/interfaces';
-import { MenuContainer, Toggle } from './styled';
+import { MenuContainer, Toggle } from './styled/index';
 
 interface MenuProps {
   todos: Todo[];
@@ -26,7 +26,7 @@ const Menu: FC<MenuProps> = (props) => {
       <MenuContainer allIsDone={allIsDone}>
         <div>
           <span>{`${doneLength}/${length}`}</span>
-          {allIsDone ? <span className="party"> 🎉</span> : ''}
+          {allIsDone ? <span className="party">🎉</span> : ''}
         </div>
         <Toggle onClick={open}>
           <span />

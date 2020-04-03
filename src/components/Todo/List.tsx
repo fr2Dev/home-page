@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Todo } from '../../definitions/interfaces';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
-import { TaskList } from './styled';
+import { TaskList } from './styled/index';
 import Item from './Item';
 
 interface ListProps {

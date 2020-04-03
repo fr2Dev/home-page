@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { ListActions, ButtonAction } from './styled';
+import { ListActions, ButtonAction } from './styled/index';
 
 interface MenuListProps {
   menuRef: React.RefObject<HTMLUListElement>;

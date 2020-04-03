@@ -1,7 +1,7 @@
 import React from 'react';
 import uniqid from 'uniqid';
-import { State, Todo } from '../definitions/interfaces';
-import { Action } from '../definitions/types';
+import { State, Todo } from '../../../definitions/interfaces';
+import { Action } from '../../../definitions/types';
 
 export const getHandleTodoInput = (dispatch: React.Dispatch<Action>) => (
   e: React.ChangeEvent<HTMLInputElement>

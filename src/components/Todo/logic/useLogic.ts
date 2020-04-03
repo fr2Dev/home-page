@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
-import { State } from '../definitions/interfaces';
-import { Action } from '../definitions/types';
+import { State } from '../../../definitions/interfaces';
+import { Action } from '../../../definitions/types';
 import {
   getHandleTodoInput,
   getAddTodo,

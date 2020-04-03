@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { Task, Label } from './styled';
+import { Task, Label } from './styled/index';
 
 interface ItemProps {
   id: string;
