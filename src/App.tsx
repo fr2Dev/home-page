@@ -1,5 +1,5 @@
 import React from 'react';
-import { Todo } from './components';
+import { Todo, Time } from './components';
 import { ThemeProvider } from 'styled-components';
 import { theme, GlobalStyle } from './style';
 
@@ -8,6 +8,7 @@ function App() {
     <div>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+        <Time />
         <Todo />
       </ThemeProvider>
     </div>
