@@ -1,41 +1,32 @@
 import React, { FC, useState, useEffect } from 'react';
+import { getCurrentTime, getGreeting } from './logic/useLogic';
 
-export interface TimeProps {}
+interface TimeProps {}
 
 const Time: FC<TimeProps> = () => {
-  const [time, setTime] = useState(getCurrentTime);
+  const [currentTime, hour24] = getCurrentTime();
+  const [time, setTime] = useState(currentTime);
+  const [hour, setHour] = useState(hour24);
 
   useEffect(() => {
     const t = setInterval(() => {
-      const currentTime = getCurrentTime();
+      const [currentTime, hour24] = getCurrentTime();
       setTime(currentTime);
+      setHour(hour24);
     }, 3000);
     return () => {
       clearInterval(t);
     };
   }, []);
 
-  return <div>{time}</div>;
-};
+  const greeting = getGreeting(hour);
 
-const getCurrentTime = () => {
-  const currentDate = new Date();
-  const currentHour = getTwoDigit(getHoursFormat(currentDate.getHours()));
-  const currentMinute = getTwoDigit(currentDate.getMinutes());
-  const indicator = currentDate.getHours() === 12 ? '' : currentDate.getHours() > 12 ? 'pm' : 'am';
-  const currentTime = `${currentHour}:${currentMinute} ${indicator}`;
-
-  return currentTime;
-};
-
-const getTwoDigit = (number: number) => {
-  if (number < 10) return `0${number}`;
-  return number.toString();
-};
-
-const getHoursFormat = (hour: number) => {
-  if (hour > 12) return hour - 12;
-  return hour;
+  return (
+    <div>
+      <h1>{time}</h1>
+      <div>{greeting}</div>
+    </div>
+  );
 };
 
 export default Time;
