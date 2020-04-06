@@ -22,7 +22,7 @@ const getCurrentTime = () => {
   const currentDate = new Date();
   const currentHour = getTwoDigit(getHoursFormat(currentDate.getHours()));
   const currentMinute = getTwoDigit(currentDate.getMinutes());
-  const indicator = currentDate.getHours() > 12 ? 'pm' : 'am';
+  const indicator = currentDate.getHours() === 12 ? '' : currentDate.getHours() > 12 ? 'pm' : 'am';
   const currentTime = `${currentHour}:${currentMinute} ${indicator}`;
 
   return currentTime;
