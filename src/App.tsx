@@ -1,17 +1,16 @@
 import React from 'react';
-import { Todo, Time } from './components';
+import { Todo, Time, Quote } from './components';
 import { ThemeProvider } from 'styled-components';
 import { theme, GlobalStyle } from './style';
 
 function App() {
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Time />
-        <Todo />
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Time />
+      <Quote />
+      <Todo />
+    </ThemeProvider>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { getCurrentTime, getGreeting } from './logic/useLogic';
+import { Container } from './styled';
 
 interface TimeProps {}
 
@@ -22,10 +23,10 @@ const Time: FC<TimeProps> = () => {
   const greeting = getGreeting(hour);
 
   return (
-    <div>
+    <Container>
       <h1>{time}</h1>
       <div>{greeting}</div>
-    </div>
+    </Container>
   );
 };
 

@@ -5,7 +5,14 @@ const GlobalStyle = createGlobalStyle`
     & button,
     & input,
     & {
+      background: #232124;
       font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+      color: #fff;
+    }
+    
+    *::selection {
+      background: #1de9b6;
+      color:#fff;
     }
 
     ul {
