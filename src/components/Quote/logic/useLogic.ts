@@ -3,8 +3,7 @@ import { useState } from 'react';
 const getRandomQuote = async () => {
   const response = await fetch('https://api.quotable.io/random');
   const data = await response.json();
-  const quote = `${data.content} — ${data.author}`;
-
+  const quote = data.content;
   return quote;
 };
 

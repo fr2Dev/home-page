@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import useQuote from './logic/useLogic';
+import { QStyled, Container } from './styled';
 
 interface QuoteProps {}
 
@@ -15,7 +16,11 @@ const Quote: FC<QuoteProps> = () => {
     }
   }, []);
 
-  return <div>{dailyQuote}</div>;
+  return (
+    <Container>
+      <QStyled>{dailyQuote}</QStyled>
+    </Container>
+  );
 };
 
 export default Quote;
