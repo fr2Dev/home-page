@@ -1,6 +1,7 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, Fragment } from 'react';
 import useName from './logic/useLogic';
-// import { Container } from './styled';
+import Edit from './Edit';
+import { ButtonStyled, Container, InputStyled } from './styled';
 
 export interface NameProps {}
 
@@ -14,12 +15,16 @@ const Name: FC<NameProps> = () => {
   }, []);
 
   return (
-    <div>
-      <button onClick={turnOn}>Edit</button>
+    <Container>
       {!isEditable ? (
-        <span>{name}</span>
+        <Fragment>
+          <span>{name}</span>
+          <ButtonStyled onClick={turnOn}>
+            <Edit />
+          </ButtonStyled>
+        </Fragment>
       ) : (
-        <input
+        <InputStyled
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -28,7 +33,7 @@ const Name: FC<NameProps> = () => {
           autoFocus
         />
       )}
-    </div>
+    </Container>
   );
 };
 
