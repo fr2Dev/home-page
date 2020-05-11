@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { getCurrentTime, getGreeting } from './logic/useLogic';
+import { Name } from '../index';
 import { Container, Greeting } from './styled';
 
 interface TimeProps {}
@@ -26,6 +27,7 @@ const Time: FC<TimeProps> = () => {
     <Container>
       <h1>{time}</h1>
       <Greeting>{greeting}</Greeting>
+      <Name />
     </Container>
   );
 };

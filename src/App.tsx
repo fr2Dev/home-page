@@ -7,7 +7,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Weather />
+      {/* <Weather /> */}
       <Time />
       <Quote />
       <Todo />
