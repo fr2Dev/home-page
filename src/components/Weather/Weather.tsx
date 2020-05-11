@@ -1,5 +1,6 @@
 import React, { FC, useEffect, Fragment } from 'react';
 import useWeather from './logic/useLogic';
+import { Container } from './styled';
 
 export interface WeatherProps {}
 
@@ -9,16 +10,17 @@ const Weather: FC<WeatherProps> = () => {
     displayWeather();
   }, []);
 
-  const { name, temp, text, icon } = weather;
+  const { name, temp, icon } = weather;
 
   return (
     <div>
       {!isFetching && (
         <Fragment>
-          <img src={icon} />
+          <Container>
+            <img src={icon} />
+            <span>{temp}°</span>
+          </Container>
           <p>{name}</p>
-          <p>{temp}°C</p>
-          <p>{text}</p>
         </Fragment>
       )}
     </div>

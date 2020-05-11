@@ -8,7 +8,6 @@ const useWeather = (): {
   const [weather, setWeather] = useState({
     name: 'not found',
     temp: 0,
-    text: 'not found',
     icon: 'not found',
   });
   const [isFetching, setIsFetching] = useState(true);
@@ -41,7 +40,6 @@ const useWeather = (): {
     const formatedWeather: WeatherInfos = {
       name: currentWeather.location.name,
       temp: currentWeather.current.temp_c,
-      text: currentWeather.current.condition.text,
       icon: currentWeather.current.condition.icon,
     };
     setWeather(formatedWeather);
@@ -53,7 +51,6 @@ const useWeather = (): {
 interface WeatherInfos {
   name: string;
   temp: number;
-  text: string;
   icon: string;
 }
 
