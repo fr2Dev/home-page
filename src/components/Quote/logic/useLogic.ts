@@ -18,6 +18,7 @@ const useQuote = () => {
     const d = new Date();
     const today = d.getDay();
     const isNewDay = today !== day;
+    localStorage.setItem('currentDay', today.toString());
 
     if (!isNewDay) {
       const quote = localStorage.getItem('dailyQuote');
