@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const ButtonStyled = styled.button`
   border: none;
@@ -21,4 +21,15 @@ export const InputStyled = styled.input`
   border: none;
   font-size: 2rem;
   font-weight: 700;
+  animation: flash 0.35s linear;
+
+  @keyframes flash {
+    from {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    to {
+      background: transparent;
+    }
+  }
 `;
