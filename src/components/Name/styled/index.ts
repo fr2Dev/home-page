@@ -1,6 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const ButtonStyled = styled.button`
+  background-color: transparent;
   border: none;
   opacity: 0;
 `;
@@ -18,18 +19,9 @@ export const Container = styled.div`
 `;
 
 export const InputStyled = styled.input`
+  animation: flash 0.35s linear;
+  background-color: transparent;
   border: none;
   font-size: 2rem;
   font-weight: 700;
-  animation: flash 0.35s linear;
-
-  @keyframes flash {
-    from {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    to {
-      background: transparent;
-    }
-  }
 `;

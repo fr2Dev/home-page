@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body {
+    margin: 0;
+    
     & button,
     & input,
     & {
@@ -23,6 +25,16 @@ const GlobalStyle = createGlobalStyle`
     button {
       cursor: pointer;
     }
+
+    @keyframes flash {
+    from {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    to {
+      background: transparent;
+    }
+  }
 }`;
 
 export default GlobalStyle;
