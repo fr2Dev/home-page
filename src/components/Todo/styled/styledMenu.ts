@@ -8,7 +8,7 @@ interface MenuContainerProps {
 export const MenuContainer = styled.div<MenuContainerProps>`
   display: flex;
   justify-content: space-between;
-  color: ${({ theme, allIsDone }) => (allIsDone ? theme.colors.outline : theme.colors.font)};
+  color: ${({ allIsDone }) => (allIsDone ? 'var(--color-interaction)' : 'var(--color-font)')};
   position: relative;
   width: 100%;
 
@@ -71,7 +71,7 @@ export const Toggle = styled.button`
   &:hover,
   &:focus {
     outline: none;
-    background-color: ${({ theme }) => rgba(theme.colors.font, 0.15)};
+    background-color: rgba('#fff', 0.15);
   }
 
   span {
@@ -80,7 +80,7 @@ export const Toggle = styled.button`
     &::before,
     &::after,
     & {
-      background-color: ${({ theme }) => theme.colors.font};
+      background-color: var(--color-font);
       border-radius: 50%;
       height: 0.3rem;
       width: 0.3rem;

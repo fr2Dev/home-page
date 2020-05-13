@@ -8,7 +8,7 @@ export const ButtonStyled = styled.button`
 
 export const Container = styled.div`
   & *:focus {
-    outline-color: ${({ theme }) => theme.colors.outline};
+    outline-color: var(--color-interaction);
   }
 
   &:hover {

@@ -8,7 +8,7 @@ const padding = '8px';
 
 export const ContainerStyled = styled.div<ContainerProps>`
   animation: flash 0.35s linear;
-  background-image: ${(props) => `url(${props.background})`};
+  background: ${(props) => `url(${props.background}) center`};
   min-height: calc(100vh - (2 * ${padding}));
   min-width: calc(100vw - (2 * ${padding}));
   padding: 8px;
@@ -23,7 +23,7 @@ export const ContainerStyled = styled.div<ContainerProps>`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: var(--color-overlay);
     z-index: -1;
   }
 `;

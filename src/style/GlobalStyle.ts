@@ -1,20 +1,32 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+:root {
+  --color-interaction: #1de9b6;
+  --color-light: #fff;
+  --color-dark: #232124;
+
+  --color-black: #333;
+  --color-font: var(--color-light);
+  --color-background: #121212;
+  --color-foreground: #1f1b24;
+  --color-overlay: rgba(0, 0, 0, 0.35);
+
+}
   body {
     margin: 0;
     
     & button,
     & input,
     & {
-      background: #232124;
+      background: var(--color-dark);
       font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
-      color: #fff;
+      color: var(--color-light);
     }
     
     *::selection {
-      background: #1de9b6;
-      color:#fff;
+      background: var(--color-interaction);
+      color: var(--color-light);
     }
 
     ul {

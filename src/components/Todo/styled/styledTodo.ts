@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.foreground};
+  background-color: var(--color-foreground);
   border-radius: 8px;
   display: flex;
   font-size: 20px;
@@ -10,12 +10,12 @@ export const Container = styled.div`
   width: 20rem;
 
   & *:focus {
-    outline-color: ${({ theme }) => theme.colors.outline};
+    outline-color: var(--color-interaction);
   }
 `;
 
 export const Form = styled.form`
-  color: ${({ theme }) => theme.colors.font};
+  color: var(--color-font);
   font-size: 18px;
 
   input,
@@ -26,24 +26,24 @@ export const Form = styled.form`
 
   input {
     background-color: transparent;
-    color: ${({ theme }) => theme.colors.font};
+    color: var(--color-font);
     margin-left: 7px;
     padding: 4px 8px;
   }
 `;
 
 export const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.outline};
+  background-color: var(--color-interaction);
   border-radius: 0 4px 4px 0;
   border: none;
-  color: ${({ theme }) => theme.colors.background};
+  color: var(--color-background);
   font-size: inherit;
   padding: 5px 8px;
 
   &:focus,
   &:hover {
-    background-color: ${({ theme }) => theme.colors.outline};
-    color: #333;
+    background-color: var(--color-interaction);
+    color: var(--color-black);
   }
 
   &.submit {
@@ -54,8 +54,8 @@ export const Button = styled.button`
 
     &:focus,
     &:hover {
-      background-color: ${({ theme }) => theme.colors.outline};
-      color: #333;
+      background-color: var(--color-interaction);
+      color: var(--color-black);
     }
   }
 

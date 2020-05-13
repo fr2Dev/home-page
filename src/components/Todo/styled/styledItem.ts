@@ -7,15 +7,15 @@ interface TaskProps {
 
 export const Task = styled.li<TaskProps>`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.foreground};
-  color: ${({ theme }) => theme.colors.font};
+  background-color: var(--color-foreground);
+  color: var(--color-font);
   display: flex;
   opacity: ${({ isDragging }) => (isDragging ? '0.65' : '1')};
   padding: 4px;
 
   &:hover,
   &:focus {
-    background-color: ${({ theme }) => rgba(theme.colors.font, 0.05)};
+    background-color: ${rgba('#fff', 0.05)};
   }
 
   button,
@@ -72,7 +72,7 @@ export const Label = styled.label`
 
     &:before {
       content: '';
-      border: 2px solid ${({ theme }) => rgba(theme.colors.font, 0.15)};
+      border: 2px solid ${rgba('#fff', 0.15)};
       height: 1rem;
       left: 0;
       position: absolute;
@@ -82,7 +82,7 @@ export const Label = styled.label`
     }
 
     &:after {
-      background: ${({ theme }) => theme.colors.foreground};
+      background: var(--color-foreground);
       content: '';
       cursor: pointer;
       height: 1.25rem;
@@ -94,7 +94,7 @@ export const Label = styled.label`
 
     &:checked {
       &:before {
-        border-color: ${({ theme }) => theme.colors.outline};
+        border-color: var(--color-interaction);
         border-top-style: none;
         border-right-style: none;
         height: 0.5rem;
@@ -121,7 +121,7 @@ export const Label = styled.label`
       display: block;
       height: 2px;
       width: 100%;
-      background: ${({ theme }) => theme.colors.font};
+      background: var(--color-font);
       position: absolute;
       top: 50%;
       left: 50%;

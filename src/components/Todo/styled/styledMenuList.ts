@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ListActions = styled.ul`
-  background-color: ${({ theme }) => theme.colors.foreground};
+  background-color: var(--color-foreground);
   border-radius: 8px;
   top: 100%;
   padding: 0.5rem;
@@ -16,13 +16,13 @@ export const ListActions = styled.ul`
   }
 `;
 export const ButtonAction = styled.button`
-  background-color: ${({ theme }) => theme.colors.outline};
+  background-color: var(--color-outline);
   border-radius: 4px;
   border: none;
-  color: ${({ theme }) => theme.colors.background};
+  color: var(--color-background);
 
   &:hover,
   &:focus {
-    background-color: ${({ theme }) => theme.colors.font};
+    background-color: var(--color-font);
   }
 `;
