@@ -15,7 +15,7 @@ export const Task = styled.li<TaskProps>`
 
   &:hover,
   &:focus {
-    background-color: ${rgba('#fff', 0.05)};
+    background-color: var(--color-opacity-lowest);
   }
 
   button,
@@ -72,7 +72,7 @@ export const Label = styled.label`
 
     &:before {
       content: '';
-      border: 2px solid ${rgba('#fff', 0.15)};
+      border: 2px solid var(--color-opacity);
       height: 1rem;
       left: 0;
       position: absolute;

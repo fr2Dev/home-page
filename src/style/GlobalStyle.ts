@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
     --color-background: #121212;
     --color-foreground: #1f1b24;
     --color-overlay: rgba(0, 0, 0, 0.35);
+    --color-opacity: rgba(250, 250, 250, 0.15);
+    --color-opacity-lowest: rgba(250, 250, 250, 0.05);
 
   }
 
@@ -54,10 +56,13 @@ const GlobalStyle = createGlobalStyle`
 
   /* THEME */
   .light {
+    --color-interaction: #0f9875;
     --color-font: var(--color-black);
     --color-background-main: #fdfdfd;
     --color-background: var(--color-light);
-    --color-foreground: var(--color-light);
+    --color-foreground: #eaeaea;
+    --color-opacity: rgba(0, 0, 0, 0.15);
+    --color-opacity-lowest: rgba(0, 0, 0, 0.05);
   }
 `;
 

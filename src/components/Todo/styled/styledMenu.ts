@@ -71,7 +71,7 @@ export const Toggle = styled.button`
   &:hover,
   &:focus {
     outline: none;
-    background-color: rgba('#fff', 0.15);
+    background-color: var(--color-opacity);
   }
 
   span {
