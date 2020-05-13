@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
-// import useName from './logic/useLogic';
-// import Edit from './Edit';
 import { ContainerStyled } from './styled';
 
-export interface ContainerProps {}
+export interface ContainerProps {
+  children: React.ReactNode;
+}
 
 const Container: FC<ContainerProps> = ({ children }) => {
   const [dailyImg, setDailyImg] = useState('');

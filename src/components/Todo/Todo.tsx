@@ -58,7 +58,7 @@ const TodoList: FC<TodoListProps> = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <div style={{ display: 'flex', justifyContent: 'flex-end' }} className="themable">
       <Container>
         {todos.length === 0 ? (
           <Button

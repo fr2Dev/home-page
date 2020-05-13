@@ -43,7 +43,7 @@ export const Button = styled.button`
   &:focus,
   &:hover {
     background-color: var(--color-interaction);
-    color: var(--color-black);
+    color: var(--color-background-main);
   }
 
   &.submit {
@@ -55,7 +55,7 @@ export const Button = styled.button`
     &:focus,
     &:hover {
       background-color: var(--color-interaction);
-      color: var(--color-black);
+      color: var(--color-background-main);
     }
   }
 
