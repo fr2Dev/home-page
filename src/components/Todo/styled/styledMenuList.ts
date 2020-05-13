@@ -16,7 +16,7 @@ export const ListActions = styled.ul`
   }
 `;
 export const ButtonAction = styled.button`
-  background-color: var(--color-outline);
+  background-color: var(--color-interaction);
   border-radius: 4px;
   border: none;
   color: var(--color-background);
