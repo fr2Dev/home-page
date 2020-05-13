@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Switch } from './styled';
 
 export interface SwitchThemeProps {}
 
@@ -13,10 +14,10 @@ const handleSwitch = () => {
 
 const SwitchTheme: FC<SwitchThemeProps> = () => {
   return (
-    <div>
-      <input type="checkbox" onChange={handleSwitch} id="theme-switch" />
-      <label htmlFor="theme-switch">Switch</label>
-    </div>
+    <Switch>
+      <input type="checkbox" onChange={handleSwitch} id="switch" />
+      <label htmlFor="switch">Toggle</label>
+    </Switch>
   );
 };
 
