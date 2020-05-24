@@ -2,20 +2,33 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --color-interaction: #1de9b6;
     --color-light: #fff;
     --color-dark: #232124;
     --color-black: #333;
+    --color-font: var(--color-light);
+    --color-overlay: rgba(0, 0, 0, 0.35);
+  }
 
+  /* THEME */
+  .dark {
+    --color-interaction: #1de9b6;
     --color-font: var(--color-light);
     --color-background-main: var(--color-dark);
     --color-background: #121212;
     --color-foreground: #1f1b24;
-    --color-overlay: rgba(0, 0, 0, 0.35);
     --color-opacity: rgba(250, 250, 250, 0.15);
     --color-opacity-lowest: rgba(250, 250, 250, 0.05);
-
   }
+  .light {
+    --color-interaction: #0f9875;
+    --color-font: var(--color-black);
+    --color-background-main: #fdfdfd;
+    --color-background: var(--color-light);
+    --color-foreground: #eaeaea;
+    --color-opacity: rgba(0, 0, 0, 0.15);
+    --color-opacity-lowest: rgba(0, 0, 0, 0.05);
+  }
+  /* END THEME */
 
   body {
     margin: 0;
@@ -52,17 +65,6 @@ const GlobalStyle = createGlobalStyle`
       }
     }
 
-  }
-
-  /* THEME */
-  .light {
-    --color-interaction: #0f9875;
-    --color-font: var(--color-black);
-    --color-background-main: #fdfdfd;
-    --color-background: var(--color-light);
-    --color-foreground: #eaeaea;
-    --color-opacity: rgba(0, 0, 0, 0.15);
-    --color-opacity-lowest: rgba(0, 0, 0, 0.05);
   }
 `;
 

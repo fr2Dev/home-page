@@ -1,21 +1,30 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Switch } from './styled';
+import useLogic from './logic/useLogic';
 
 export interface SwitchThemeProps {}
 
-const handleSwitch = () => {
-  const classLight = 'light';
-  const themables: Element[] = Array.from(document.getElementsByClassName('themable'));
-  themables.forEach((el: Element) => {
-    const isLight = el?.classList.contains(classLight);
-    return isLight ? el?.classList.remove(classLight) : el?.classList.add(classLight);
-  });
-};
-
 const SwitchTheme: FC<SwitchThemeProps> = () => {
+  const { init, handleSwitch } = useLogic();
+  useEffect(() => {
+    if (localStorage.length > 0 && localStorage.getItem('theme')) {
+      const theme = localStorage.getItem('theme');
+      init(theme as string);
+    } else {
+      init('dark');
+    }
+  }, []);
+
+  const getInitialChecked = () => {
+    const theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
+    return theme === 'dark' ? false : true;
+  };
+
+  const isChecked = getInitialChecked();
+
   return (
     <Switch>
-      <input type="checkbox" onChange={handleSwitch} id="switch" />
+      <input type="checkbox" onChange={handleSwitch} id="switch" checked={isChecked} />
       <label htmlFor="switch">Toggle</label>
     </Switch>
   );
