@@ -6,7 +6,7 @@ export const QStyled = styled.q`
 
 export const Container = styled.div`
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin: 1rem auto 0;
   max-width: 600px;
   text-align: center;

@@ -4,14 +4,12 @@ interface ContainerProps {
   background: string;
 }
 
-const padding = '8px';
-
 export const ContainerStyled = styled.div<ContainerProps>`
   animation: flash 0.35s linear;
   background: ${(props) => `url(${props.background}) center`};
-  min-height: calc(100vh - (2 * ${padding}));
-  min-width: calc(100vw - (2 * ${padding}));
-  padding: 8px;
+  min-height: calc(100vh - (2 * var(--padding)));
+  min-width: calc(100vw - (2 * var(--padding)));
+  padding: var(--padding);
   position: relative;
   z-index: 0;
 

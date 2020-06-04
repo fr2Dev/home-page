@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Switch = styled.div`
   --base: 24px;
 
+  position: absolute;
+  bottom: var(--padding);
+  right: var(--padding);
+
   input[type='checkbox'] {
     height: 0;
     width: 0;

@@ -3,8 +3,7 @@ export const getCurrentTime = (): [string, number] => {
   const hour = currentDate.getHours();
   const currentHour = getTwoDigit(getHoursFormat(hour));
   const currentMinute = getTwoDigit(currentDate.getMinutes());
-  const indicator = hour >= 12 ? 'pm' : 'am';
-  const currentTime = `${currentHour}:${currentMinute} ${indicator}`;
+  const currentTime = `${currentHour}:${currentMinute}`;
 
   return [currentTime, hour];
 };

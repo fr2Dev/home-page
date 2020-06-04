@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { getCurrentTime, getGreeting } from './logic/useLogic';
 import { Name } from '../index';
-import { Container, Greeting, Message } from './styled';
+import { Container, Greeting, Message, Hours } from './styled';
 
 interface TimeProps {}
 
@@ -25,7 +25,7 @@ const Time: FC<TimeProps> = () => {
 
   return (
     <Container>
-      <h1>{time}</h1>
+      <Hours>{time}</Hours>
       <Message>
         <Greeting>{greeting}, </Greeting>
         <Name />

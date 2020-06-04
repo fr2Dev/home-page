@@ -66,3 +66,12 @@ export const Button = styled.button`
   &:hover {
   }
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--padding);
+  position: absolute;
+  right: 0;
+  top: 0;
+`;

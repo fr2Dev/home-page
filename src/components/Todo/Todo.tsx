@@ -2,7 +2,7 @@ import React, { FC, useRef, useState, useEffect } from 'react';
 import { Todo } from '../../definitions/interfaces';
 import useLogic from './logic/useLogic';
 import { List, Menu, Form } from './index';
-import { Container, Button } from './styled/index';
+import { Container, Button, Wrapper } from './styled/index';
 
 interface TodoListProps {}
 
@@ -58,7 +58,7 @@ const TodoList: FC<TodoListProps> = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-end' }} className="themable">
+    <Wrapper className="themable">
       <Container>
         {todos.length === 0 ? (
           <Button
@@ -78,7 +78,7 @@ const TodoList: FC<TodoListProps> = () => {
         )}
         <Form {...formProps} />
       </Container>
-    </div>
+    </Wrapper>
   );
 };
 

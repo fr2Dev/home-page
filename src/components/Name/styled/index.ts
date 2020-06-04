@@ -22,6 +22,6 @@ export const InputStyled = styled.input`
   animation: flash 0.35s linear;
   background-color: transparent;
   border: none;
-  font-size: 2rem;
+  font-size: var(--font-size-greeting);
   font-weight: 700;
 `;

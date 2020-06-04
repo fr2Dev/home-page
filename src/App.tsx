@@ -8,8 +8,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Container>
+        <Weather />
         <SwitchTheme />
-        {/* <Weather /> */}
         <Time />
         <Quote />
         <Todo />

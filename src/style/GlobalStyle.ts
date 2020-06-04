@@ -7,6 +7,8 @@ const GlobalStyle = createGlobalStyle`
     --color-black: #333;
     --color-font: var(--color-light);
     --color-overlay: rgba(0, 0, 0, 0.35);
+    --padding: 8px;
+    --font-size-greeting: 3rem;
   }
 
   /* THEME */
