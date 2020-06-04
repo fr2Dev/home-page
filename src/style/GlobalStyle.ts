@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
       color: var(--color-font);
     }
+
+    &:not([class]) {
+      background-color: var(--color-dark);
+    }
     
     *::selection {
       background: var(--color-interaction);
