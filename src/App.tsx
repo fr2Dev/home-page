@@ -1,11 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Todo, Time, Quote, Weather, Container, SwitchTheme } from './components';
-import { theme, GlobalStyle } from './style';
+import { GlobalStyle } from './style';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={{}}>
       <GlobalStyle />
       <Container>
         <Weather />
