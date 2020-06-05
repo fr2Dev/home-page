@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, memo } from 'react';
 import { Switch } from './styled';
 import useLogic from './logic/useLogic';
 
@@ -30,4 +30,4 @@ const SwitchTheme: FC<SwitchThemeProps> = () => {
   );
 };
 
-export default SwitchTheme;
+export default memo(SwitchTheme);

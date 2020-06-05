@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, memo } from 'react';
 import useQuote from './logic/useLogic';
 import { QStyled, Container } from './styled';
 
@@ -23,4 +23,4 @@ const Quote: FC<QuoteProps> = () => {
   );
 };
 
-export default Quote;
+export default memo(Quote);

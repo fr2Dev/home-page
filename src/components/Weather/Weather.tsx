@@ -1,4 +1,4 @@
-import React, { FC, useEffect, Fragment } from 'react';
+import React, { FC, useEffect, Fragment, memo } from 'react';
 import useWeather from './logic/useLogic';
 import { Container } from './styled';
 
@@ -27,4 +27,4 @@ const Weather: FC<WeatherProps> = () => {
   );
 };
 
-export default Weather;
+export default memo(Weather);

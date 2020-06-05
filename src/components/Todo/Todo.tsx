@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState, useEffect } from 'react';
+import React, { FC, useRef, useState, useEffect, memo } from 'react';
 import { Todo } from '../../definitions/interfaces';
 import useLogic from './logic/useLogic';
 import { List, Menu, Form } from './index';
@@ -82,4 +82,4 @@ const TodoList: FC<TodoListProps> = () => {
   );
 };
 
-export default TodoList;
+export default memo(TodoList);

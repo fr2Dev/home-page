@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, memo } from 'react';
 import { getCurrentTime, getGreeting } from './logic/useLogic';
 import { Name } from '../index';
 import { Container, Greeting, Message, Hours } from './styled';
@@ -34,4 +34,4 @@ const Time: FC<TimeProps> = () => {
   );
 };
 
-export default Time;
+export default memo(Time);
