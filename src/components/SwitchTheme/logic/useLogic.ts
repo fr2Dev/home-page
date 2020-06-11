@@ -13,8 +13,7 @@ const useLogic = () => {
 
   const handleSwitch = () => {
     const switchClass = (el: Element, classRemoved: string, classAdded: string) => {
-      el?.classList.remove(classRemoved);
-      el?.classList.add(classAdded);
+      el?.classList.replace(classRemoved, classAdded);
       localStorage.setItem('theme', classAdded);
       setIsChecked(classAdded === 'light');
     };
