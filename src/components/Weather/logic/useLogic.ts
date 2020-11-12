@@ -4,20 +4,29 @@ const useWeather = (): {
   weather: WeatherInfos;
   displayWeather: () => void;
   isFetching: boolean;
+  city: string;
+  handleCity: (city: string) => void;
 } => {
   const [weather, setWeather] = useState({
-    name: 'not found',
     temp: 0,
     icon: 'not found',
   });
+  const localCity = localStorage.length > 0 && localStorage.getItem('cityWeather');
+  const [city, setCity] = useState(localCity ? localCity : 'toulouse');
   const [isFetching, setIsFetching] = useState(true);
+
+  const handleCity = (city: string) => {
+    setCity(city);
+    localStorage.setItem('cityWeather', city);
+  };
 
   const getWeather = async () => {
     try {
+      setIsFetching(true);
       const key = '83bbbdcdaa4f44eabad84157200405';
-      const city = 'Bussy-saint-Georges';
       const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-      const apiUrl = `${corsProxy}http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
+      // const apiUrl = `${corsProxy}http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
+      const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
 
       const response = await fetch(apiUrl);
       const data = await response.json();
@@ -37,19 +46,19 @@ const useWeather = (): {
 
   const displayWeather = async () => {
     const currentWeather = await getWeather();
-    const formatedWeather: WeatherInfos = {
-      name: currentWeather.location.name,
-      temp: currentWeather.current.temp_c,
-      icon: currentWeather.current.condition.icon,
-    };
-    setWeather(formatedWeather);
+    if (currentWeather.location) {
+      const formatedWeather: WeatherInfos = {
+        temp: currentWeather.current.temp_c,
+        icon: currentWeather.current.condition.icon,
+      };
+      setWeather(formatedWeather);
+    }
   };
 
-  return { weather, displayWeather, isFetching };
+  return { city, handleCity, weather, displayWeather, isFetching };
 };
 
 interface WeatherInfos {
-  name: string;
   temp: number;
   icon: string;
 }
