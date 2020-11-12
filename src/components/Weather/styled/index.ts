@@ -12,3 +12,10 @@ export const Container = styled.div`
     margin: 0;
   }
 `;
+
+export const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px;
+`;

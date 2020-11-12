@@ -5,8 +5,15 @@ interface ContainerProps {
 }
 
 export const ContainerStyled = styled.div<ContainerProps>`
+  align-items: center;
   animation: flash 0.35s linear;
   background: ${(props) => `url(${props.background}) center`};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
   min-height: calc(100vh - (2 * var(--padding)));
   min-width: calc(100vw - (2 * var(--padding)));
   padding: var(--padding);

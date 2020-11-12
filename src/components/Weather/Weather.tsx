@@ -1,6 +1,7 @@
-import React, { FC, useEffect, Fragment, memo } from 'react';
+import React, { FC, useEffect, memo } from 'react';
+import { Loader } from '../';
 import useWeather from './logic/useLogic';
-import { Container } from './styled';
+import { Container, Wrapper } from './styled';
 
 export interface WeatherProps {}
 
@@ -14,15 +15,19 @@ const Weather: FC<WeatherProps> = () => {
 
   return (
     <div>
-      {!isFetching && (
-        <Fragment>
-          <Container>
-            <img src={icon} />
-            <span>{temp}°</span>
-          </Container>
-          <p>{name}</p>
-        </Fragment>
-      )}
+      <Wrapper>
+        {isFetching ? (
+          <Loader />
+        ) : (
+          <>
+            <Container>
+              <img src={icon} />
+              <span>{temp}°</span>
+            </Container>
+            <p>{name}</p>
+          </>
+        )}
+      </Wrapper>
     </div>
   );
 };
