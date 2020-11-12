@@ -24,4 +24,6 @@ export const InputStyled = styled.input`
   border: none;
   font-size: var(--font-size-greeting);
   font-weight: 700;
+  max-width: 100%;
+  width: clamp(5rem, 50vw, 40rem);
 `;
