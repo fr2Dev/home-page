@@ -23,10 +23,8 @@ const useWeather = (): {
   const getWeather = async () => {
     try {
       setIsFetching(true);
-      const key = '83bbbdcdaa4f44eabad84157200405';
       const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-      const apiUrl = `${corsProxy}http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
-      // const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
+      const apiUrl = `${corsProxy}http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${city}`;
 
       const response = await fetch(apiUrl);
       const data = await response.json();
