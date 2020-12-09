@@ -7,7 +7,8 @@ interface ContainerProps {
 export const ContainerStyled = styled.div<ContainerProps>`
   align-items: center;
   animation: flash 0.35s linear;
-  background: ${(props) => `url(${props.background}) center`};
+  background: ${(props) => `url(${props.background}) center no-repeat`};
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
